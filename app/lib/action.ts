@@ -16,4 +16,8 @@ export async function createInvoice(formData: FormData) {
     amount: formData.get('amount'),
     status: formData.get('status'),
     )}
+
+export async function deleteInvoice(id: string) {
+  await sql`DELETE FROM invoices WHERE id = ${id}`;
+  revalidatePath('/dashboard/invoices');
 }
