@@ -1,4 +1,8 @@
 'use server';
+
+ 
+export async function createInvoice(formData: FormData) {}
+
 import { z } from 'zod';
  
 const FormSchema = z.object({
@@ -18,6 +22,8 @@ export async function createInvoice(formData: FormData) {
     )}
 
 export async function deleteInvoice(id: string) {
-  await sql`DELETE FROM invoices WHERE id = ${id}`;
+  await sql`
+  DELETE FROM invoices WHERE id = ${id}`;
   revalidatePath('/dashboard/invoices');
 }
+
